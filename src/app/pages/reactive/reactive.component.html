@@ -1,0 +1,96 @@
+<h4>Formularios <small> Reactivos </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido"
+               class="form-text text-danger">El nombre es requerido</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text" 
+               placeholder="Apellido"
+               formControlName="apellido"
+               [class.is-invalid]="apellidoNoValido">
+        <small *ngIf="apellidoNoValido"
+               class="form-text text-danger">El apellido es requerido</small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="email"
+             [class.is-invalid]="emailNoValido">
+        <small *ngIf="emailNoValido"
+               class="form-text text-danger">El email es requerido</small>
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="direccion">
+    <label class="col-2 col-form-label">Dirección</label>
+    <div class="form-row col-8">
+      <div class="col">
+        <input class="form-control"  
+               type="text" 
+               placeholder="Distrito"
+               formControlName="distrito"
+               [class.is-invalid]="distritoNoValido">
+      </div>
+
+      <div class="col">
+        <input class="form-control"  
+               type="text"
+               placeholder="Ciudad"
+               formControlName="ciudad"
+               [class.is-invalid]="ciudadNoValido">
+      </div>
+     
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<hr>
+<pre>
+  Estado del Formulario: {{forma.valid}}
+  <br>
+  Status: {{forma.status}}
+</pre>
+
+<pre>
+  {{forma.value | json}}
+</pre>
+
